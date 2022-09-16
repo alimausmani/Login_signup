@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html1>
+    <head>
+        <title>Registration Form</title>
+        <script>
+        function validateForm()
+        {
+        var fn=document.forms["regform"]["firstname"].value;
+        var ln=document.forms["regform"]["lastname"].value;
+        var gn=document.forms["regform"]["gender"];
+        var ctry=document.forms["regform"]["country"];
+
+        if (fn==null||fn=="")   
+        {
+        alert("First name cannot be blank");
+        return false;   
+        }
+        else if(1n==null||1n=="")
+        {
+        alert("Last name cannot be blank");
+        return false;   
+        }
+        else if((gn[0].checked==false)&&(gn[1].checked==false))
+        {
+        alert("Please enter your gender");
+        return false;
+        }
+        else if(ctry.selectIndex==0)
+        {
+        alert("Enter your Country");
+        return false;     
+        } 
+        }   
+        </script>
+        
+        <style>
+        div{
+            margin:0px auto ;
+            width: 35%;
+            padding: 30px;
+            font-size: 20px;
+            background-color: #006699;
+        }
+        input[type=text],select
+        {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;  
+        border: 1px solid#ccc; 
+        box-sizing: border-box;
+        font-size: 14px;
+        } 
+        input[type=submit]
+        {
+        width: 100%;
+        background-color: #0099;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        }
+        input[type=submit]:hover
+        {
+        background-color: #2F4F4F;   
+        } 
+        h1
+        {
+        color: blue;
+        text-align: center;
+        } 
+        div label
+        {
+        color: white;   
+        }
+        </style>
+    </head>
+    <body>
+        <script>
+
+        function sub() {
+            event.preventDefault()
+            var a=document.getElementById("fname").value
+            var b=document.getElementById("lname").value
+            var c=document.getElementById("email").value
+            var d=document.getElementById("Password").value
+            var e=document.getElementById("Correct Password").value
+            var f=document.getElementById("phone number").value
+            var g=document.getElementById("male").value
+            var h=document.getElementById("female").value
+            var i=document.getElementById("country").value
+            console.log(a,b,c,d,e,f,g,h,i);
+            var url="https://serverside-five.vercel.app/user/add"
+            var obj={
+            
+                "username": a+b,
+                    "email": c,
+                    "password": d,
+                    "mobile": f
+            }
+            fetch(url,{
+                method:"POST",
+                body:JSON.stringify(obj),
+                headers:{
+                    "Content-Type":"application/json"
+                }
+
+            }).then(x=>x.json()).then(x=>console.log(x)).catch(t=>console.log(t))
+            }    
+
+
+        
+
+
+        </script>
+        <h1>Registration Form</h1>
+        <div>
+        <form name="regform"  onsubmit="sub()">
+        <label for="fname">First Name</label1>
+        <input type="text" id="fname" name="firstname" placeholder="Enter First Name">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lastname" placeholder="Enter Last Name">
+        <label for="email">Email Id</label>
+        <input type="text" id="email" email="email" placeholder="Enter The Email Addres">
+        <label for="password">Password</label1>
+        <input type="text" id="Password" name="Password" placeholder="Enter The Password">
+        <label for="Correct Password">Correct Password</label>
+        <input type="text" id="Correct Password" name="Correct Password" placeholder="Enter The Correct Password">
+        <label for="phone number">Phone Number</label>
+        <input type="text" id="phone number" name="Phone Number" placeholder="Enter The Phone Number">    
+        <label>Gender</label><br/>
+        <input type="radio" id="male" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" value="female">
+        <label for="female">Female</label><br/>
+        <label for="country">country</label1>
+        <select id="country" name="country"> 
+            <option value="select">Select Country</option>   
+        <option value="usa">USA</option> 
+        <option value="india">INDIA</option> 
+        <option value="japan">JAPAN</option> 
+        <input type="submit" value="Submit">   
+
+        </form>    
+        </div>
+    </body>
+</html1>
